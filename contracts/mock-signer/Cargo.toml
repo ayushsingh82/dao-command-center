@@ -1,0 +1,22 @@
+[package]
+name = "mock-signer"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "A stand-in for NEAR's MPC signer (v1.signer), for sandbox tests only. Returns signatures the test registered. Never deploy it."
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+near-sdk = { version = "=5.15.1" }
+
+[workspace]
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+overflow-checks = true
